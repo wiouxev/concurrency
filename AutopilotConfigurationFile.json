@@ -1,0 +1,28 @@
+{
+    "CloudAssignedTenantId":  "0cf1000a-f2b2-4206-b5de-109ea0169973",
+    "CloudAssignedAutopilotUpdateTimeout":  1800000,
+    "CloudAssignedAutopilotUpdateDisabled":  1,
+    "CloudAssignedForcedEnrollment":  0,
+    "Version":  2049,
+    "Comment_File":  "Profile Autopilot Profile",
+    "CloudAssignedAadServerData":  "{\"ZeroTouchConfig\":{\"CloudAssignedTenantUpn\":\"\",\"ForcedEnrollment\":0,\"CloudAssignedTenantDomain\":\"corp.connectuc.com\"}}",
+    "CloudAssignedTenantDomain":  "corp.connectuc.com",
+    "CloudAssignedDomainJoinMethod":  0,
+    "CloudAssignedOobeConfig":  286,
+    "ZtdCorrelationId":  "8c927c1a-4d4b-48b3-ad5e-a5df61032e23"
+}
+{
+    "CloudAssignedDomainJoinMethod":  0,
+    "CloudAssignedDeviceName":  "AP-%SERIAL%",
+    "CloudAssignedAutopilotUpdateTimeout":  1800000,
+    "CloudAssignedForcedEnrollment":  1,
+    "Version":  2049,
+    "CloudAssignedTenantId":  "0cf1000a-f2b2-4206-b5de-109ea0169973",
+    "CloudAssignedAutopilotUpdateDisabled":  1,
+    "ZtdCorrelationId":  "bcbe44e4-30a0-49b7-97e4-ae6c2dd79cb6",
+    "Comment_File":  "Profile Autopilot Profile 2",
+    "CloudAssignedAadServerData":  "{\"ZeroTouchConfig\":{\"CloudAssignedTenantUpn\":\"\",\"ForcedEnrollment\":1,\"CloudAssignedTenantDomain\":\"corp.connectuc.com\"}}",
+    "CloudAssignedOobeConfig":  1308,
+    "CloudAssignedTenantDomain":  "corp.connectuc.com",
+    "CloudAssignedLanguage":  "os-default"
+}
