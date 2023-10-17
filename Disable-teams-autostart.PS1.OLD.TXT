@@ -1,0 +1,34 @@
+param(
+# Teams open in the background Hidden $true or $false
+[boolean]$OpenAsHidden=$True,
+# Teams open automatically at user login $true or $false
+[boolean]$OpenAtLogin=$False,
+# Close Teams App fully instead of running on Taskbar $true or $false
+[boolean]$RunningOnClose=$True
+)
+
+# Get Teams Configuration
+If((Test-Path -Path "$ENV:APPDATA\Microsoft\Teams\desktop-config.json" -PathType Leaf)-eq $true){
+    # Terminate Teams Process
+    Get-Process -Name Teams -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+
+    # Remove Registry Key Prop
+    $entry = $null -eq (Get-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Run)."com.squirrel.Teams.Teams"
+    if ( !$entry ) {
+        Remove-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Run -Name "com.squirrel.Teams.Teams"
+    }
+    
+    $FileContent=Get-Content -Path "$ENV:APPDATA\Microsoft\Teams\desktop-config.json"
+    # Convert file content from JSON format to PowerShell object
+    $JSONObject=ConvertFrom-Json -InputObject "$FileContent"
+    # Update Object settings
+    $JSONObject.appPreferenceSettings.OpenAsHidden=$OpenAsHidden
+    $JSONObject.appPreferenceSettings.OpenAtLogin=$OpenAtLogin
+    $JSONObject.appPreferenceSettings.RunningOnClose=$RunningOnClose
+    # Convert Object back to JSON format
+    $NewFileContent=$JSONObject | ConvertTo-Json
+    # Update configuration in file
+    $NewFileContent | Set-Content -Path "$ENV:APPDATA\Microsoft\Teams\desktop-config.json"
+}
+Start-Process -FilePath "$ENV:LOCALAPPDATA\Microsoft\Teams\Update.exe" -ArgumentList "--processStart ""Teams.exe"""
+

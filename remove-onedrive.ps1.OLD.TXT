@@ -1,0 +1,3 @@
+Get-Process onedrive | Stop-Process -Force
+get-childitem -Path "HKCU:\SOFTWARE\Microsoft\OneDrive\Accounts" | remove-item -recurse -force
+get-childitem -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace" | Where-Object{$_.name -like "*04271989*"} | remove-item -Recurse -force
